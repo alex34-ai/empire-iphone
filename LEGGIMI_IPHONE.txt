@@ -1,0 +1,18 @@
+EMPIRE iPhone PWA — sorgente APK 1.5.42
+
+INSTALLAZIONE
+1. Pubblicare TUTTA questa cartella su un sito HTTPS (non aprire index.html come file locale).
+2. Aprire URL con Safari su iPhone.
+3. Condividi > Aggiungi alla schermata Home, poi aprire EMPIRE dalla nuova icona.
+4. La prima apertura richiede Internet; il service worker memorizza gli script. Le animazioni vengono memorizzate via via quando visualizzate. Per l’uso offline completo delle animazioni occorre aprirle online prima.
+
+DATI
+- Archivio locale nell’area dati del sito/PWA dell’iPhone. I dati non vengono importati automaticamente dal Samsung.
+- Impostazioni > Unisci copia SYNC APP: importa il JSON da File.
+- Impostazioni > Esporta copia per SYNC APP: esporta JSON da inviare con SYNC APP.
+- Non cancellare dati di Safari/PWA: potrebbero andare persi. Conservare backup JSON.
+
+LIMITI
+- Non è una app IPA; il sito deve essere servito via HTTPS e le funzioni native Android non sono disponibili (bilancia Bluetooth, timer Android in background, notifiche native, ecc.).
+- L’integrazione automatica SYNC APP non è inclusa.
+- Nessun test fisico su Safari iPhone eseguito.

@@ -219,3 +219,16 @@ button.primary:hover,button.action-button:hover{background:#ed6a00}.empire-keybo
 }
 .page-plan .plan-context > .empire-app-tile .empire-tile-icon { flex: none; }
 .page-plan .plan-context > .empire-app-tile .empire-tile-label { font-size: clamp(14px, 3.7vw, 17px); }
+
+/* iOS PWA fix: animated WebP is a single moving image, NOT a CSS frame sequence. */
+.exercise-motion .motion-frames:has(.motion-clip){opacity:1;}
+.exercise-motion.motion-ready .motion-fallback{visibility:hidden;}
+.exercise-motion .motion-clip{opacity:1!important;animation:none!important;visibility:visible!important;}
+.exercise-motion.motion-failed .motion-frames{display:none;}
+.exercise-motion.motion-failed .motion-fallback{visibility:visible;}
+/* Ensure custom Empire keyboard is above dialogs on Safari. */
+body:has(.empire-keyboard:not([hidden])) .empire-keyboard{z-index:100000;}
+@supports(-webkit-touch-callout:none){
+ .empire-keyboard button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+ input,textarea,select{font-size:max(16px,1em);}
+}

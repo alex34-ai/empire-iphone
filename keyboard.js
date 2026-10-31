@@ -1,7 +1,7 @@
 /* Empire in-app keyboard: no system IME; values still flow through normal input events. */
 (function(){'use strict';
-// iOS: use the native visible keyboard instead of a read-only custom input.
-if(/iPad|iPhone|iPod/.test(navigator.userAgent)|| (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){window.EmpireKeyboard={close:()=>false,open:el=>el?.focus(),advance:()=>false,isOpen:()=>false};return;}
+// iOS PWA: use the visible Empire keyboard for all editable text fields.
+// Date pickers and dedicated weight keypad remain handled by their own controls.
 let current=null,mode='abc',shift=false,start=0,end=0,selectAdvance=null,fieldPointer=false;
 const excluded=new Set(['checkbox','radio','file','hidden','range','color','date','time','submit','button']);
 const pad=document.createElement('section');pad.id='empire-keyboard';pad.className='empire-keyboard';pad.hidden=true;pad.setAttribute('aria-label','Tastiera Empire');document.body.append(pad);

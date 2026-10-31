@@ -10,7 +10,7 @@ const MOTION_ALIASES={'spinte panca inclinata manubri':'cat-petto-7','curl al ca
 function resolvedMotion(e){if(e.animationId&&EXERCISE_MOTIONS[e.animationId])return EXERCISE_MOTIONS[e.animationId];const name=EmpireCore.norm(e.name),direct=EXERCISE_MOTIONS[e.catalogId||e.id];if(direct&&EmpireCore.norm(direct.name)===name&&(e.equipment===direct.equipment||e.equipment==='neutral'||!e.equipment))return direct;const exact=Object.values(EXERCISE_MOTIONS).filter(m=>EmpireCore.norm(m.name)===name&&(e.equipment===m.equipment||e.equipment==='neutral'||!e.equipment));if(exact.length&&new Set(exact.map(m=>m.assetHash||m.slug)).size===1)return exact[0];const alias=EXERCISE_MOTIONS[MOTION_ALIASES[name]];if(alias&&(e.equipment===alias.equipment||e.equipment==='neutral'||!e.equipment))return alias;return null;}
 function exerciseVisual(e){
  const motion=resolvedMotion(e);if(!motion)return equipment(e.equipment,e.name);
- const frames=`<img src="${(window.EmpireIOSMotion||typeof IntersectionObserver!=='function')?motion.clip:motion.poster}" data-motion-src="${motion.clip}" data-poster-src="${motion.poster}" alt="" loading="lazy" decoding="async" class="motion-frame motion-clip" width="320" height="320">`;
+ const frames=`<img src="${(window.EmpireIOSMotion||typeof IntersectionObserver!=='function')?motion.clip:motion.poster}" data-motion-src="${motion.clip}" data-poster-src="${motion.poster}" alt="" loading="eager" decoding="async" class="motion-frame motion-clip" width="320" height="320">`;
  return `<span class="equipment exercise-motion" aria-hidden="true"><span class="motion-fallback">${equipment(e.equipment,e.name)}</span><span class="motion-frames">${frames}</span></span>`;
 }
 function updateMotionImage(image,failed=false){
